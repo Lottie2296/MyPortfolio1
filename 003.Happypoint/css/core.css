@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/*    font-family: 'Noto Sans KR', sans-serif;*/
+
+/*사이트 전체설정*/
+body{
+    font-family: "Noto Sans KR", "맑은 고딕", Verdana;
+    font-size: 15px; /* 글자 기본체 크기 16px 을 변경 */
+    
+    /*글자셋팅은 하위요소로 모두 상속됨!*/
+}
+
+
+/*IR(Image Replacement)-이미지설명요소 등 안보이게 처리*/
+
+.bld{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.dn{ /*숨김목적*/
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+

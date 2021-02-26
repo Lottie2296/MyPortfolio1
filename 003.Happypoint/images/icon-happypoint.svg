@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <g id="prefix__ic_happypoint" transform="translate(-59 -1717)">
+        <g id="prefix__그룹_6987" data-name="그룹 6987" transform="translate(60.5 1721)">
+            <ellipse id="prefix__타원_905" cx="14" cy="13.894" data-name="타원 905" rx="14" ry="13.894" transform="translate(5.538 2.603)" style="stroke:#222;stroke-linejoin:round;fill:none"/>
+            <circle id="prefix__타원_906" cx="14" cy="14" r="14" data-name="타원 906" transform="translate(2.5 2)" style="fill:#fff;stroke:#222;stroke-linejoin:round"/>
+            <text id="prefix__p" transform="translate(12 21.5)" style="fill:#222;font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;letter-spacing:-.02em">
+                <tspan x="0" y="0">P</tspan>
+            </text>
+        </g>
+        <path id="prefix__guide" d="M0 0H40V40H0z" transform="translate(59 1717)" style="opacity:0;fill:none"/>
+    </g>
+</svg>

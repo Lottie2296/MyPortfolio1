@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happypiont에 오신것을 환영합니다!</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mediaMain.css">
+    <style>
+        html,body{
+            overflow-x: hidden;
+        }
+        
+        html,
+        body,
+        h1,
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background: url(images/newscreen.png) no-repeat center top;
+
+            z-index: -1;
+            opacity: 0;
+        }
+
+        /*그리드뷰 재설정*/
+        .grid {
+            display: none;
+            width: 1024px;
+            max-width: 100%;
+            /* 그리드도 같이 줄어들게!  */
+            z-index: -1;
+        }
+
+
+        /*공통class //////////////////////// */
+
+
+        /*속박스 class*/
+        .ibx {
+            width: 1024px;
+            /*            maw100p
+            최대가로크기 100% 란 화면이 1280보다 작으면 100% */
+            max-width: 100%;
+
+            margin: 0 auto;
+            /*            outline: 3px dashed blue;*/
+        }
+
+        /* 각 영역별 파티션 높이값 설정하기 */
+        /* 1. 상단영역 */
+        .t1 {
+            height: 40px;
+        }
+
+        .t2 {
+            /*            margin-top: 10px;*/
+            height: 90px;
+        }
+
+
+        /* 2. 컨텐츠1영역 */
+        .c11 {
+            height: 630px;
+        }
+
+        /* 3. 컨텐츠2영역 */
+        .c21 {
+            height: 200px;
+        }
+
+        .c22 {
+            height: 765px;
+        }
+
+        /*
+
+        .c23 {
+            height: 255px;
+        }
+
+        .c24 {
+            height: 255px;
+        }
+*/
+
+        .c25 {
+            height: 155px;
+        }
+
+        /* 4. 컨텐츠3영역 */
+        .c31 {
+            /*            margin: 120px 0 55px 0;*/
+            height: 265px;
+        }
+
+        .c32 {
+            height: 365px;
+        }
+
+        .c33 {
+            height: 120px;
+        }
+
+        /* 5. 컨텐츠4영역 */
+        .c41 {
+            height: 200px;
+        }
+
+        .c42 {
+            /*            margin-top: 50px;*/
+            height: 366px;
+        }
+
+        .c43 {
+            height: 180px;
+        }
+
+
+        /* 6. 컨텐츠5영역 */
+        .c51 {
+            height: 280px;
+        }
+
+        /* 7. 하단영역 */
+        .i1 {
+            height: 70px;
+        }
+
+        .i2 {
+            height: 210px;
+        }
+
+
+        /* 메인페이지 CSS */
+
+        /* ****** 컨텐츠 영역  *************************************** */
+
+        /* 타이틀 공통 */
+        .title {
+            position: relative;
+            top: 46px;
+            font-size: 2.813rem;
+            /* 45/16 = 2.813rem*/
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .stitle {
+            display: block;
+            position: relative;
+            top: 36px;
+            font-size: 1.125rem;
+            /* 18/16 = 1.125rem*/
+            text-align: center;
+        }
+
+        .wtitle {
+            position: relative;
+            top: 100px;
+            font-size: 2.813rem;
+            text-align: center;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .wstitle {
+            display: block;
+            position: relative;
+            top: 90px;
+            font-size: 1.125rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* ****** c1 컨텐츠영역1 (배너) ******************************* */
+        /*
+        #cont1 {
+            background: url(images/mainbanner_1.png) no-repeat;
+            background-position: top;
+        }
+*/
+        /* 배너위치조정 */
+        .cont1 {
+            position: relative;
+            /*            left: 50%;*/
+            width: 1635px;
+            height: 715px;
+            /*            transform: translateX(-50%);*/
+            margin: 0 auto;
+            /*            float: left;*/
+            overflow: hidden;
+            /*넘치는 자식요소 숨기기*/
+            box-sizing: border-box;
+        }
+
+        .mban {
+            /*사진을 싸고 있는 슬라이드*/
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 200%;
+            height: 100%;
+        }
+
+        .mban li {
+            /*부모가 2배되었으므로 2등분함!*/
+            width: 50%;
+            height: 100%;
+        }
+
+
+        .mban li.m1 {
+            background: url("images/mainbanner_1.png") no-repeat center/auto 100%;
+        }
+
+        .mban li.m2 {
+            background: url("images/mainbanner_2.png") no-repeat center/auto 100%;
+        }
+
+        /* 이동버튼 셋팅*/
+        .abtn {
+            position: absolute;
+            top: 24%;
+            /*            transform: translateY(-100%);*/
+            /*세로중앙이동*/
+            width: 4%;
+            z-index: 1;
+        }
+
+        /*버튼이미지*/
+        .abtn img {
+            width: 100%;
+            /*높이값은 자동조정*/
+            border: 0;
+            /*이미지링크시 보더생김 방지!*/
+        }
+
+        /*왼쪽버튼*/
+        .lb {
+            left: 2%;
+        }
+
+        /*오른쪽버튼*/
+        .rb {
+            right: 2%;
+        }
+
+        /*링크걸린 이미지 테두리 없앰*/
+        img {
+            border: none;
+        }
+
+        /* ****** c2 컨텐츠영역2 (sns) ******************************* */
+
+        .wrapsns {
+            overflow: hidden;
+            /* sns 사각형 끝부분 둥글게 */
+            border-radius: 40px;
+        }
+
+
+        /* sns 각 박스 크기 및 위치*/
+        #cont2 .snsbox {
+            position: relative;
+            /* 부모자격*/
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            margin-left: 2px;
+            /*            outline: 3px dotted cyan;*/
+            overflow: hidden;
+        }
+
+
+        /*
+        #cont2 .snsbox a::nth-child(1){
+            border-radius: 10%;
+        }
+        #cont2 .snsbox:nth-child(4){
+            border-radius: 0 10% 0 0;
+        }
+        
+        #cont2 .snsbox:nth-child(9){
+            border-radius: 0 0 0 10%;
+        }
+        
+        #cont2 .snsbox:nth-child(12){
+            border-radius: 0 0 10% 0;
+        }
+*/
+
+
+        /* 배경 마우스오버시 트랜지션 */
+        #cont2 .snsbox:hover .snsbgc {
+            top: 0;
+            left: 0;
+            /* 속시이지 */
+            transition: all .5s ease-in-out;
+        }
+
+        /* sns 각 박스 이미지 */
+        #cont2 .snsbox img {
+            width: 100%;
+        }
+
+        /* sns반투명덮개 */
+        #cont2 .snsbgc {
+            position: absolute;
+            /* 부모는? .snsbox */
+            top: 100%;
+            /*            left: 100%;*/
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+
+            transition: all .5s ease-in-out;
+        }
+
+        /* sns박스 내부 글자셋팅 */
+/*
+        미디어 쿼리로 모두 옮기기 : 부분적용
+        
+        #cont2 .snstext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+
+            width: 65%;
+            height: 35%;
+
+            color: #fff;
+            font-size: 0.937rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            word-break: break-all;
+        }
+*/
+
+        /* 블로그 아이콘 가상요소로 삽입 */
+/*        미디어쿼리로 이동 */
+        
+        #cont2 .snsbgc::after {
+            content: url(images/blogimg.png);
+            display: block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 67px;
+            height: 67px;
+        }
+
+        /* ************************************************************** */
+        /* [ 넘치는 글자 말줄임 표시하기 ]*/
+
+        /* ★ 1줄짜리 처리는 1~4번 사용 ★
+       ★ 여러줄 처리(2줄이상)은 줄바꿈방지 2번을 하지 않는다! ★*/
+
+        /* 1. 넘치는 요소 숨기기 <공통> */
+        /*    overflow: hidden;*/
+        /* 박스크기를 줘야 숨기기가 된다! >>> 3번 ! */
+
+        /* 2. 줄바꿈방지 : 한줄일때만 사용!! <한줄용>*/
+        /*white-space: nowrap;*/
+
+        /* 3. 박스가로크기를 지정해야 숨겨진다! <공통> */
+        /*    width: 100%;*/
+
+        /* 4. 말줄임표 <공통>*/
+        /*    text-overflow: ellipsis;*/
+        /* 입술에 손대며 말하지마! lipsis~ */
+        /* cf) 글씨체에 따라 말줄임표 표시가 바닥에 붙는게 있고, 중간에 생기는 것이 있다.*/
+
+        /*
+        [ 밴더사 접두어 : vender prefix ]
+        - 브라우저 밴더사들 : 크롬, 사파리, 파이어폭스, 익스플로러, 오페라 ... 
+        -webkit- 밴더사접두어로 크롬, 사파리 브라우저용! (크롱과 사파리로 웹킷을 가지고 놀러간다!)
+        -o- 오페라
+        -ms- 익스플로러
+        -moz- 파이어폭스(뭐가 그리 모질라 불여우!)
+    
+        >>> 여러줄용 접두어 속성은 다른 최신브라우저에서 모두 적용된다!
+    */
+
+
+        /* 5. display 설정을 변경 <여러줄용>*/
+        /*    display: -webkit-box;*/
+
+        /* 6. 처리할 라인 수를 지정 <여러줄용>*/
+        /*    -webkit-line-clamp: 2;*/
+        /* 붉은색으로 뜨는 것은 공식적이지 않기 때문, 하지만 네이버 등 대형사에서도 쓰는 방법이다*/
+
+        /* 7. 여러줄처리 진행방향 설정 <여러줄용> */
+        /*- 주로 세로방향진행(vertical)*/
+        /*    -webkit-box-orient: vertical;*/
+
+        /* 8. 단어 단위로 떨어져서 생기는 공백 없애기 위해 글자 단위로 부수기! */
+        /*    word-break: break-all;*/
+
+
+        /* 만일 아래쪽에 글자 일부가 보일 경우 높이값을 설정해준다! */
+        /*    height: 3.4rem;*/
+
+        /* ************************************************************** */
+
+        /* ****** c3 컨텐츠영역3 (제휴안내) ****************************** */
+
+        /* 주황색 뒷배경 */
+        #cont3 {
+            position: relative;
+            /* 부모 */
+        }
+
+        #cont3::before {
+            content: '';
+            display: block;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 464px;
+            background-color: #ff8f00;
+            z-index: -1;
+        }
+
+
+        /* 제휴안내 각 박스 */
+        .coo {
+            margin: 0 2%;
+            width: 96%;
+            height: 363px;
+            /*            outline: 1px solid cyan;*/
+            overflow: hidden;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 2%;
+        }
+
+        /* 카드에 마우스오버시 그림자주기 */
+        .coo:hover {
+            box-shadow: 2px 2px 4px #ccc;
+        }
+
+
+        /* 제휴안내 이미지*/
+        .coo>img {
+            width: 100%;
+            border-radius: 2% 2% 0 0;
+        }
+
+        /* 제휴안내 타이틀 */
+
+        .coo {
+            font-size: 0.938rem;
+        }
+
+        h4.coot {
+            position: relative;
+            top: 15px;
+            font-size: 1.125rem;
+            letter-spacing: 1px;
+            margin-bottom: -10px;
+        }
+
+        .coologo {
+            position: relative;
+            top: 45px;
+            width: 100%;
+        }
+
+
+        /* 제휴안내 - 회사로고 및 이름 */
+        .coologo>img {
+            width: 36px;
+            margin-right: 14px;
+            border-radius: 50%;
+            vertical-align: -10px;
+        }
+
+        /* 더보기 */
+        .more1 {
+            position: relative;
+            top: 180px;
+            left: 210px;
+            font-size: 0.93rem;
+            /* 15/16 */
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+
+        /* ****** c4 컨텐츠영역4 (공지사항) ***************************** */
+
+        .notifyWrap {
+            position: relative;
+            /* 부모자격*/
+            width: 100%;
+        }
+
+        /* 각 공지 제목 */
+        .notifyT li {
+            position: relative;
+            float: none;
+            padding: 35px 42px;
+            font-size: 1.25rem;
+            letter-spacing: -1px;
+            line-height: 50px;
+        }
+
+        /* 제목에 가장최근 항목 NEW 가상요소넣기 */
+        .notifyT li:first-child:before {
+            content: "NEW";
+            display: inline-block;
+            background-color: #F7532E;
+
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+
+            color: #fff;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 0.93rem;
+        }
+
+        .notifyT li:first-child {
+            vertical-align: -8px;
+        }
+
+
+
+        /* 날짜 */
+
+        /* 일자 */
+        span.notifyD {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 92%;
+            color: #555;
+            font-size: 1.875rem;
+            text-align: center;
+        }
+        
+        /* 연도-월 */
+        span.notifyD:first-line{
+            color: red;
+            color: #888;
+            font-size: 0.875rem
+        }
+
+        /* .notifyD a {
+            display: block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 50px;
+
+            text-align: center;
+        }*/
+
+        /* 일자 */
+        /*span.notifyD {
+            font-size: 2rem;*/
+        /* 32/16 */
+        /*   color: #555;}*/
+
+        /* 연도-월 */
+        /* .notifyD a::first-line {
+            color: #888;
+        font-size: 0.875rem;}*/
+        /* 14/16 */
+
+        /* 날짜위치조정*/
+        /* .notifyD li:first-child {
+            margin-top: 25px;
+        }*/
+
+        /* 더보기 */
+        .more2 {
+            position: relative;
+            top: 125px;
+            left: 210px;
+            font-size: 0.938rem;
+            letter-spacing: -1px;
+        }
+
+        /* ****** 하단배너 ***************************** */
+
+        .fotban img {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.상단영역 -->
+    <!-- 1.상단영역 -->
+    <h1 class="dn">해피포인트 메인페이지</h1>
+    <div id="top">
+        <header class="ibx clb top">
+
+            <!-- GNB 라인 100% 박스 -->
+            <div class="gnbline"></div>
+
+            <h2 class="dn">해피포인트 메뉴</h2>
+            <!--             .col-*3-->
+            <div class="col-1 t1 tlogo1">
+                <a href="">AK mall</a>
+            </div>
+
+            <div class="col-10 t1">
+                <ul class="tmenu">
+                    <li><a href="">로그인</a></li>
+                    <li><a href="">회원가입</a></li>
+                    <li><a href="">멤버십라운지</a></li>
+                    <li><a href="">매장찾기</a></li>
+                    <li class="cs"><a href="#">고객센터 <b>∨</b></a>
+                        <div class="tmenus">
+                            <div class="wraptmenus">
+                                <span> <a href="">Q＆A</a></span>
+                                <span> <a href="">FAQ</a> </span>
+                                <span> <a href="">공지사항</a></span>
+                                <span> <a href="">이용약관</a> </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-1 t1 card"><a class="tlogo2" href="">카드등록</a></div>
+            <div class="col-1 t2">
+                <a href=""><img src="images/logo-header.png" alt="해피포인트로고" id="hplogo"></a>
+            </div>
+            <div class="col-1 t2"></div>
+            <div class="col-9 t2 gnbbox">
+
+                <nav class="gnb">
+
+                    <dl>
+                        <dt><a href="">소개</a></dt>
+                        <dd>
+                            <a href="">해피포인트 소개</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트 카드</a>
+                        </dd>
+                        <dd>
+                            <a href="">제휴브랜드</a>
+                        </dd>
+                        <dd>
+                            <a href="">멤버십 라운지</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트앱 소개</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">제휴</a></dt>
+                        <dd>
+                            <a href="">제휴사 안내</a>
+                        </dd>
+                        <dd>
+                            <a href="">제휴카드 안내</a>
+                        </dd>
+                        <dd>
+                            <a href="">문화제휴 안내</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">이벤트/쿠폰</a></dt>
+                        <dd>
+                            <a href="">진행 이벤트</a>
+                        </dd>
+                        <dd>
+                            <a href="">당첨자발표</a>
+                        </dd>
+                        <dd>
+                            <a href="">모바일쿠폰 안내</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">나눔</a></dt>
+                        <dd>
+                            <a href="">해피포인트 기부소개</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트 기부활동</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피버스데이파티</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피버스데이파티
+                                <span class="hbp">당첨자발표</span></a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">마이페이지</a></dt>
+                        <dd>
+                            <a href="">MY포인트</a>
+                        </dd>
+                        <dd>
+                            <a href="">MY카드</a>
+                        </dd>
+                        <dd>
+                            <a href="">MY이벤트</a>
+                        </dd>
+                        <dd>
+                            <a href="">회원정보</a>
+                        </dd>
+                        <dd>
+                            <a href="">1:1상담내역</a>
+                        </dd>
+                    </dl>
+                </nav>
+            </div>
+            <div class="col-1 t2 tbtn">
+                <a href=""><img src="images/icon-header-menu.png" alt="햄버거메뉴버튼"></a>
+            </div>
+        </header>
+    </div>
+    <!-- 2.컨텐츠영역1 -->
+    <div id="cont1">
+        <section class="ibx clb cont1">
+            <h2 class="dn">배너</h2>
+            <ul class="mban">
+
+                <li class="banner m1">
+                    <span class="bld">배너1</span>
+                </li>
+                <li class="banner m2">
+                    <span class="bld">배너2</span>
+                </li>
+            </ul>
+             <!--이동버튼-->
+            <a href="#" class="abtn lb"><img src="images/left_btn.png" alt="왼쪽이동버튼"></a>
+            <a href="#" class="abtn rb"><img src="images/right_btn.png" alt="오른쪽이동버튼"></a>
+
+            <div class="col-5 c11"></div>
+            <div class="col-7 c11"></div>
+        </section>
+    </div>
+    <!-- 3.컨텐츠영역2 -->
+    <div id="cont2">
+        <section class="ibx clb cont2">
+            <h2 class="dn">해피포인트SNS</h2>
+            <div class="col-3 c21"></div>
+            <div class="col-6 c21">
+                <h3 class="title">해피포인트 SNS</h3>
+                <br>
+                <span class="stitle">더 많은 소식을 SNS로 만나보세요.</span>
+            </div>
+            <div class="col-3 c21"></div>
+            <div class="col-12 c22 wrapsns">
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_01.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                - 패션5 매장 정보 안내 -<br>
+                                * 주소: 서울특별시 용산구 이태원로 272<br>
+                                * 전화번호: 02-2071-9505<br>
+                                * 운영시간: 매일 07:30~22:00, 연중무휴<br>
+                                카페 문화가 발달하면서 디저트를 대하는<br>
+                                우리의 마음가짐도 달라지고 있어요😃<br>
+                                <br>
+                                보다 특별한 디저트가 생각나는 날이라면<br>
+                                한남동에 위치하고 있는 패션5 매장을<br>
+                                강력하게 추천하는 바입니다!<br>
+                                <br>
+                                장인의 열정을 담는 공간, 패션5 매장은<br>
+                                세계 각국에서 즐기는 다양한 베이커리와<br>
+                                디저트를 만날 수 있는 디저트 갤러리에요!
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_02.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                샌드위치라고 다 같은 샌드위치가 아니죠!
+                                프리미엄 샌드위치 브랜드 리나스 매장에서는
+                                샌드위치와 샐러드로 든든한 한 끼 식사를
+                                간편하게 해결할 수 있는 매장이에요! 😄<br>
+                                <br>
+                                여의도, 잠실, 서대문 등 교통🚌이 편한 장소에<br>
+                                10여 개의 리나스 매장이 자리 잡고 있어요 : )<br>
+                                <br>
+                                점심시간에 매장을 찾는 고객들도 계시지만<br>
+                                출퇴근길에 한 끼 식사🥪를 해결하기 위해<br>
+                                찾아주시는 고객분들도 많이 계십니다!
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_03.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                - 파리크라상 반포서래점 정보 안내 -<br>
+                                * 주소: 서울 서초구 서래로5길 2 (반포동 95-9)<br>
+                                * 전화번호: 02-3478-9139<br>
+                                *운영시간: 매일 07:00~23:00, 연중무휴<br>
+                                <br>
+                                서래마을에 위치한 파리크라상입니다😀<br>
+                                외국인들이 많이 사는 동네인지라<br>
+                                다국적의 손님들이 찾아오는 매장이에요~*<br>
+                                <br>
+                                파리크라상 반포서래점은 정통 유럽 스타일의<br>
+                                프리미엄 베이커리의 맛을 볼 수 있어요 :&#41;
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_04.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                코시국이 된 지도 어느새 1년이 되었어요😥
+                                언택트 시대에 사회적 거리 두기는 일상이 됐죠.
+                                <br>
+                                오프라인 만남이 줄어들게 되고<br>
+                                랜선 모임이 늘어나고 있는 요즘!<br>
+                                랜선으로 마음을 전하는 선물하기♥<br>
+                                해피마켓으로 이용해 보세요~🎁<br>
+                                <br>
+                                직접 만날 수는 없어도 따듯한 마음은<br>
+                                랜선으로도 얼마든지 전할 수 있어요<br>
+                                해피포인트 가맹점에서 이용할 수 있는<br>
+                                모바일 상품권, 해피콘! :D
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_05.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                파리바게뜨, 배스킨라빈스, 던킨 이용하시면서
+                                해피포인트 적립 잘하고 계신가요? 😃😃<br>
+                                파스쿠찌, 파리크라상, 쉑쉑, 에그슬럿...
+                                이 외에도 수많은 해피포인트 가맹점이 있죠!<br>
+                                <br>
+                                그런데! 해피포인트 가맹점에서 포인트 적립할 때<br>
+                                뒷사람 눈치 보셨던 적은 없으셨나요? 😅<br>
+                                내 소듕한 포인트는 꼭 적립해야 하는데<br>
+                                적립하랴, 결제하랴 바쁘디 바쁘셨을 거예요 ㅎㅎ<br>
+                                <br>
+                                이제 적립과 결제를 따로 해야 했던 번거로움을<br>
+                                해피페이 기능으로 처리할 수 있게 되었어요
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_06.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                - 리나스 서대문점 정보 -<br>
+                                *주소: 서울특별시 중구 통일로 114<br>
+                                바비엥2 1층 리나스<br>
+                                *전화번호: 02-720-3115<br>
+                                *운영시간: 평일 06:30~21:00<br>
+                                주말 및 공휴일 08:00~18:00<br>
+                                <br>
+                                서대문역에도 프리미엄 샌드위치 브랜드<br>
+                                리나스 매장이 자리 잡고 있어요!<br>
+                                <br>
+                                서대문역 6번 출구에서 1분도 걸리지 않은 거리<br>
+                                그야말로 역세권에 있어서 접근성이 최고예요🧡
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_07.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                어느새 2020년 한 해가 저물어가고
+                                2021년의 새로운 해가 다가오고 있어요
+                                신축년 새해를 맞아 신년운세들은 보셨나요?
+                                <br>
+                                해피포인트와 사물의 인생 일러스트 작가님의<br>
+                                콜라보를 통해 디저트 유형별로 보는<br>
+                                신년운세 보기가 탄생하였습니다 :D<br>
+                                <br>
+                                (▼▼▼신년운세 보러 가기▼▼▼)<br>
+                                https://vo.la/G9r14
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_08.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                "핸드폰 교체 얼마나 자주 하시나요?"
+                                사용기간이 꽤 지나서 최신 기종으로 바꾸거나
+                                분실이나 고장 등의 사유로 바꾸기도 하죠!<br>
+                                <br>
+                                하루가 다르게 스마트폰의 성능이 진화하고 있어<br>
+                                그만큼 교체 주기도 짧아지고 있는지도 모르겠어요<br>
+                                <br>
+                                이번 겨울! 핸드폰을 바꾸실 계획이 있으신 분들<br>
+                                바로 이번 포스팅에 집중해 주세요! :D
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_09.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                코로나로 인해 재택근무 하는 직장인들이
+                                많이 늘어나고 있어요~ ㅠ0ㅠ
+                                출퇴근이 없어 편하기는 하다지만
+                                도대체 이 코로나의 끝은 언제가 될까요?😥<br>
+                                <br>
+                                직장인들의 필수 아이템! 바로 커피죠!?☕<br>
+                                회사에서 일을 하든 재택근무로 일을 하든<br>
+                                커피 한 잔 정도는 괜찮잖아요~ :D
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_10.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                연말연초면 신년운세 많이들 보시죠?
+                                사실 너무 맹신해도 문제일 수 있지만
+                                새해의 마음가짐을 새롭게 다 잡고
+                                도움이 되는 말들을 귀담아듣는 재미가 있어요!
+                                <br>
+                                해피포인트에서도 재미로 점쳐보는<br>
+                                신년운세 테스트를 들고 왔습니다~ : )<br>
+                                디저트 성향으로 알아보는 2021년 신년운세!<br>
+                                지금 바로 확인해 보세요!! 🚗<br>
+                                <br>
+                                해피앱에서 진행되는 신년 운세 테스트에서는<br>
+                                디저트를 대하는 개인의 성향을 파악해<br>
+                                신년 운세 결과를 점쳐볼 수 있어요 :D
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_11.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                2020년 한 해가 저물어가고 있네요.
+                                크리스마스가 열흘도 채 남지 않았어요!
+                                올해는 코로나 시국 탓에 연말 모임은
+                                사실상 어려워지게 됐을 텐데요😥
+                                가족들과 함께 오붓한 홈파티 계획 중이신가요?<br>
+                                <br>
+                                크리스마스 파티에 빠져서는 안 될 케이크!<br>
+                                아직 준비 못 하셨다면 집중!! ✨
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="snsbox">
+                        <img src="images/mainSNS_12.jpg" alt="sns박스">
+                        <div class="snsbgc">
+                            <div class="snstext">
+                                연말이지만 모임을 할 수 없는 요즘!
+                                사회적 거리두기로 사실상 올해 모임은 끝났네요 😥
+                                이런 시국에 가족들과 즐기는 홈파티 어떠실까요?
+                                <br>
+                                SPC그룹의 영국풍 다이닝 레스토랑 퀸즈파크가<br>
+                                본격적으로 케이터링 서비스를 시작했어요 : )<br>
+                                <br>
+                                퀸즈파크 케이터링 서비스를 이용하면<br>
+                                호텔 수준의 뷔페 요리를 집에서 즐길 수 있어요<br>
+                                원하는 시간과 장소에서 최고급 요리와 함께<br>
+                                특별한 시간을 기념하실 수 있습니다 :D
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 c25"></div>
+        </section>
+    </div>
+    <!-- 4.컨텐츠영역3 -->
+    <div id="cont3">
+        <section class="ibx clb cont3">
+            <h2 class="dn">제휴안내</h2>
+            <div class="col-3 c31"></div>
+            <div class="col-6 c31">
+                <h3 class="wtitle">제휴안내</h3>
+                <br>
+                <span class="wstitle">해피포인트 카드의 혜택을 똑같이 누리세요.</span>
+            </div>
+            <div class="col-3 c31"><a class="more more1" href="">더보기</a></div>
+            <div class="col-3 c32">
+                <a href="">
+                    <div class="coo">
+                        <img src="images/main_coo_01.jpg" alt="제휴안내1">
+                        <h4 class="coot">현대백화점 해피포인트 카드</h4>
+                        <br><br><br>해피포인트 5% 할인
+                        <div class="coologo">
+                            <img src="images/main_coo_011.jpg" alt="제휴안내로고1">현대백화점카드
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-3 c32">
+                <a href="">
+                    <div class="coo">
+                        <img src="images/main_coo_02.jpg" alt="제휴안내2">
+                        <h4 class="coot">키자니아</h4>
+                        <br><br><br>키자니아 30% 할인
+                        <div class="coologo">
+                            <img src="images/main_coo_022.png" alt="제휴안내로고2">키자니아
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-3 c32">
+                <a href="">
+                    <div class="coo">
+                        <img src="images/main_coo_04.jpg" alt="제휴안내3">
+                        <h4 class="coot">신라면세점</h4>
+                        <br><br><br>0.3% 해피포인트 적립 또는 차감할인
+                        <div class="coologo">
+                            <img src="images/main_coo_044.png" alt="제휴안내로고3">신라면세점(오프라인)
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-3 c32">
+                <a href="">
+                    <div class="coo">
+                        <img src="images/main_coo_03.jpg" alt="제휴안내4">
+                        <h4 class="coot">토니모리</h4>
+                        <br><br><br>제품 구매금액 2% 해피포인트 적립
+                        <div class="coologo">
+                            <img src="images/main_coo_033.png" alt="제휴안내로고4">토니모리
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 c33">
+
+            </div>
+        </section>
+    </div>
+    <!-- 5.컨텐츠영역4 -->
+    <div id="cont4">
+        <section class="ibx clb cont4">
+            <h2 class="dn">공지사항</h2>
+            <div class="col-3 c41"></div>
+            <div class="col-6 c41">
+                <h3 class="title">공지사항</h3>
+                <br>
+                <span class="stitle">해피포인트 새로운 소식을 알려드립니다.</span>
+            </div>
+            <div class="col-3 c41"><a class="more more2" href="">더보기</a></div>
+
+            <div class="col-12 c42 notifyWrap">
+                <div class="notifyT">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                해피포인트 사명 변경에 대한 공지 안내
+                                <span class="notifyD">2021-01 <br> 18</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                해피포인트 멤버십 정책 개편 안내 (2021년 2월)
+                                <span class="notifyD">2021-01 <br> 05 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">[공지] 시스템 점검에 따른 서비스 중단 안내(12/29)</a>
+                            <span class="notifyD">2020-12 <br> 28 </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 c43"></div>
+        </section>
+    </div>
+    <!-- 6.컨텐츠영역5 -->
+    <div id="cont5">
+        <section class="ibx clb cont5">
+            <h2 class="dn">배너(APP광고)</h2>
+            <div class="col-12 c51 fotban">
+                <a href=""><img src="images/img-benefit-banner-img.png" alt="하단배너"></a>
+            </div>
+        </section>
+    </div>
+    <!-- 7. 하단영역 -->
+    <div id="bot">
+        <footer class="ibx clb bot">
+            <h2 class="dn">하단정보링크</h2>
+            <div class="col-9 i1 cus">
+                <span class="custxt">
+                    해피포인트 고객센터 <span class="cusnum">080-320-1234</span>
+                    <span class="custime">평일 AM 9시 ~ PM 7시 주말,공휴일 휴무</span>
+                </span>
+            </div>
+            <div class="col-3 i1">
+                <select id="fslink">
+                    <option value="fs">패밀리 사이트</option>
+                    <option value="f0">SPC</option>
+                    <option value="f1">파리크라상</option>
+                    <option value="f2">파리바게뜨</option>
+                    <option value="f3">파스쿠찌</option>
+                    <option value="f4">잠바주스</option>
+                    <option value="f5">디퀸즈케이터링</option>
+                    <option value="f6">베스킨라빈스</option>
+                    <option value="f7">던킨도너츠</option>
+                    <option value="f8">빚은</option>
+                    <option value="f9">SPC외식 브랜드</option>
+                    <option value="f10">브랜드몰</option>
+                </select>
+            </div>
+            <div class="col-8 i2 wrapinfo">
+                <ul class="info">
+                    <li><a href="">회원이용약관</a></li>
+                    <li><a href=""><b>개인정보처리방침</b></a></li>
+                    <li><a href="">위치기반 서비스 이용약관</a></li>
+                    <li><a href="">위치정보사업 이용약관</a></li>
+                    <li><a href="">이메일 무단수집거부</a></li>
+                </ul>
+                <br>
+                <span class="info">섹타나인</span>
+                <span class="info">사업자 등록번호: 113-86-10017</span>
+                <span class="info">경기도 성남시 중원구 사기막골로31번길 18(상대원동)</span>
+                <br>
+                <span class="info">
+                    <b>Copyright ⓒ by SPC ALL RIGHTS RESERVED.</b></span>
+            </div>
+            <div class="col-4 i2">
+                <ul class="snslink">
+                    <li>
+                        <h6 class="dn">인스타SNS</h6>
+                        <a href=""><img src="images/icon-insta.png" alt="인스타SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">페이스북SNS</h6>
+                        <a href=""><img src="images/icon-facebook.png" alt="페이스북SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">네이버블로그SNS</h6>
+                        <a href=""><img src="images/icon-blog.png" alt="네이버블로그SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">유튜브SNS</h6>
+                        <a href=""><img src="images/icon-youtube.png" alt="유튜브SNS"></a>
+                    </li>
+                </ul>
+
+            </div>
+        </footer>
+    </div>
+
+
+    <!--그리드뷰:그리드 시스템 비주얼 뷰-->
+    <ul class="grid">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</body></html>

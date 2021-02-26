@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happypiont에 오신것을 환영합니다!</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(function() { //// jQB //////////////////
+            
+            /* 상단작은고객메뉴 클릭 시 메뉴표시하기*/
+//            $(.tmenu>li:last-child).click(
+//            function(){})
+            
+            
+            /* 메뉴슬라이드 내려오기 */
+            $(".gnb").hover(
+                function() { //// over
+                    $("#top").addClass("on");
+                },
+                function() { //// out
+                    $("#top").removeClass("on");
+                }); ///// hover //////////////
+
+            /* 메뉴슬라이드 내려오기 */
+            $(".cs").click(
+                function() {
+                    $(".tmenus,.wraptmenus").toggleClass("on")
+                }); ///// click //////////////
+
+        
+
+        }); ///////// jQB //////////////////////
+    </script>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background: url(images/newscreen.png) no-repeat center top;
+
+            z-index: -1;
+            opacity: 0;
+        }
+
+        /*그리드뷰 재설정*/
+        .grid {
+            display: none;
+            width: 1024px;
+            max-width: 100%;
+            /* 그리드도 같이 줄어들게!  */
+            z-index: -1;
+        }
+
+
+        /*공통class //////////////////////// */
+
+
+        /*속박스 class*/
+        .ibx {
+            width: 1024px;
+            /*            maw100p
+            최대가로크기 100% 란 화면이 1280보다 작으면 100% */
+            max-width: 100%;
+
+            margin: 0 auto;
+/*            outline: 3px dashed blue;*/
+        }
+
+        /* 각 영역별 파티션 높이값 설정하기 */
+        /* 1. 상단영역 */
+        .t1 {
+            height: 40px;
+        }
+
+        .t2 {
+            /*            margin-top: 10px;*/
+            height: 90px;
+        }
+
+
+        /* 2. 컨텐츠1영역 */
+        .c11 {
+            height: 630px;
+        }
+
+        /* 3. 컨텐츠2영역 */
+        .c21 {
+            height: 200px;
+        }
+
+        .c22 {
+            height: 765px;
+        }
+
+        /*
+
+        .c23 {
+            height: 255px;
+        }
+
+        .c24 {
+            height: 255px;
+        }
+*/
+
+        .c25 {
+            height: 155px;
+        }
+
+        /* 4. 컨텐츠3영역 */
+        .c31 {
+            /*            margin: 120px 0 55px 0;*/
+            height: 265px;
+        }
+
+        .c32 {
+            height: 365px;
+        }
+
+        .c33 {
+            height: 120px;
+        }
+
+        /* 5. 컨텐츠4영역 */
+        .c41 {
+            height: 200px;
+        }
+
+        .c42 {
+            /*            margin-top: 50px;*/
+            height: 366px;
+        }
+
+        .c43 {
+            height: 180px;
+        }
+
+
+        /* 6. 컨텐츠5영역 */
+        .c51 {
+            height: 280px;
+        }
+
+        /* 7. 하단영역 */
+        .i1 {
+            height: 70px;
+        }
+
+        .i2 {
+            height: 210px;
+        }
+
+
+        /* 메인페이지 CSS */
+
+        /* ****** 컨텐츠 영역  *************************************** */
+
+        
+        
+    </style>
+</head>
+
+<body>
+    <!-- 1.상단영역 -->
+    <h1 class="dn">해피포인트 메인페이지</h1>
+    <div id="top">
+        <header class="ibx clb top">
+
+            <!-- GNB 라인 100% 박스 -->
+            <div class="gnbline"></div>
+
+            <h2 class="dn">해피포인트 메뉴</h2>
+            <!--             .col-*3-->
+            <div class="col-1 t1 tlogo1">
+            <a href="">AK mall</a>
+            </div>
+            
+            <div class="col-10 t1">
+                <ul class="tmenu">
+                    <li><a href="">로그인</a></li>
+                    <li><a href="">회원가입</a></li>
+                    <li><a href="">멤버십라운지</a></li>
+                    <li><a href="">매장찾기</a></li>
+                    <li class="cs"><a href="">고객센터 <b>∨</b></a>
+                        <div class="tmenus">
+                                <div class="wraptmenus">
+                                    <span> <a href="">Q＆A</a></span>
+                                    <span> <a href="">FAQ</a> </span>
+                                    <span> <a href="">공지사항</a></span>
+                                    <span> <a href="">이용약관</a> </span>
+                                </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-1 t1 card"><a class="tlogo2" href="">카드등록</a></div>
+            <div class="col-1 t2">
+                <a href=""><img src="images/logo-header.png" alt="해피포인트로고" id="hplogo"></a>
+            </div>
+            <div class="col-1 t2"></div>
+            <div class="col-9 t2 gnbbox">
+
+                <nav class="gnb">
+
+                    <dl>
+                        <dt><a href="">소개</a></dt>
+                        <dd>
+                            <a href="">해피포인트 소개</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트 카드</a>
+                        </dd>
+                        <dd>
+                            <a href="">제휴브랜드</a>
+                        </dd>
+                        <dd>
+                            <a href="">멤버십 라운지</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트앱 소개</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">제휴</a></dt>
+                        <dd>
+                            <a href="">제휴사 안내</a>
+                        </dd>
+                        <dd>
+                            <a href="">제휴카드 안내</a>
+                        </dd>
+                        <dd>
+                            <a href="">문화제휴 안내</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">이벤트/쿠폰</a></dt>
+                        <dd>
+                            <a href="">진행 이벤트</a>
+                        </dd>
+                        <dd>
+                            <a href="">당첨자발표</a>
+                        </dd>
+                        <dd>
+                            <a href="">모바일쿠폰 안내</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">나눔</a></dt>
+                        <dd>
+                            <a href="">해피포인트 기부소개</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피포인트 기부활동</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피버스데이파티</a>
+                        </dd>
+                        <dd>
+                            <a href="">해피버스데이파티
+                            <span class="hbp">당첨자발표</span></a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="">마이페이지</a></dt>
+                        <dd>
+                            <a href="">MY포인트</a>
+                        </dd>
+                        <dd>
+                            <a href="">MY카드</a>
+                        </dd>
+                        <dd>
+                            <a href="">MY이벤트</a>
+                        </dd>
+                        <dd>
+                            <a href="">회원정보</a>
+                        </dd>
+                        <dd>
+                            <a href="">1:1상담내역</a>
+                        </dd>
+                    </dl>
+                </nav>
+            </div>
+            <div class="col-1 t2 tbtn">
+                <a href=""><img src="images/icon-header-menu.png" alt="햄버거메뉴버튼"></a>
+            </div>
+        </header>
+    </div>
+    <!-- 2.컨텐츠영역1 -->
+    
+    
+    
+    <!-- 7. 하단영역 -->
+    <div id="bot">
+        <footer class="ibx clb bot">
+            <h2 class="dn">하단정보링크</h2>
+            <div class="col-6 i1 cus">
+                <span class="custxt">
+                    해피포인트 고객센터 <span class="cusnum">080-320-1234</span>
+                    <span class="custime">평일 AM 9시 ~ PM 7시 주말,공휴일 휴무</span>
+                </span>
+            </div>
+            <div class="col-3 i1"></div>
+            <div class="col-3 i1">
+                <select id="fslink">
+                    <option value="fs">패밀리 사이트</option>
+                    <option value="">SPC</option>
+                    <option value="">파리크라상</option>
+                    <option value="">파리바게뜨</option>
+                    <option value="">파스쿠찌</option>
+                    <option value="">잠바주스</option>
+                    <option value="">디퀸즈케이터링</option>
+                    <option value="">베스킨라빈스</option>
+                    <option value="">던킨도너츠</option>
+                    <option value="">빚은</option>
+                    <option value="">SPC외식 브랜드</option>
+                    <option value="">브랜드몰</option>
+                </select>
+            </div>
+            <div class="col-8 i2 wrapinfo">
+                <ul class="info">
+                    <li><a href="">회원이용약관</a></li>
+                    <li><a href=""><b>개인정보처리방침</b></a></li>
+                    <li><a href="">위치기반 서비스 이용약관</a></li>
+                    <li><a href="">위치정보사업 이용약관</a></li>
+                    <li><a href="">이메일 무단수집거부</a></li>
+                </ul>
+                <br>
+                <span class="info">섹타나인</span> 
+                <span class="info">사업자 등록번호: 113-86-10017</span>
+                <span class="info">경기도 성남시 중원구 사기막골로31번길 18(상대원동)</span> 
+                <br>
+                <span class="info">
+                <b>Copyright ⓒ by SPC ALL RIGHTS RESERVED.</b></span>
+            </div>
+            <div class="col-1 i2"></div>
+            <div class="col-3 i2">
+                <ul class="snslink">
+                    <li>
+                        <h6 class="dn">인스타SNS</h6>
+                        <a href=""><img src="images/icon-insta.png" alt="인스타SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">페이스북SNS</h6>
+                        <a href=""><img src="images/icon-facebook.png" alt="페이스북SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">네이버블로그SNS</h6>
+                        <a href=""><img src="images/icon-blog.png" alt="네이버블로그SNS"></a>
+                    </li>
+                    <li>
+                        <h6 class="dn">유튜브SNS</h6>
+                        <a href=""><img src="images/icon-youtube.png" alt="유튜브SNS"></a>
+                    </li>
+                </ul>
+                
+            </div>
+        </footer>
+    </div>
+
+
+    <!--그리드뷰:그리드 시스템 비주얼 뷰-->
+    <ul class="grid">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</body></html>

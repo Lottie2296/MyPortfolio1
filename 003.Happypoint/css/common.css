@@ -1,0 +1,449 @@
+@charset "utf-8";
+/* happypoint 상단 및 하단영역 : common.css*/
+
+/* ****** 1. 상단영역 ***************************************** */
+
+#top {
+    position: relative;
+    /*가상요소 부모자격*/
+    z-index: 9999;
+}
+
+#top::before {
+    content: "";
+    position: absolute;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #fff;
+    transition: height .4s ease-out;
+}
+
+#top::after {
+    content: "";
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1024px;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    background: url(../images/happyorder.jpg) no-repeat 0px 25px/160px;
+    transition: height .4s ease-out;
+}
+
+#top.on::before,
+#top.on::after {
+    height: 170px;
+}
+
+/* 최상위박스*/
+.top {
+    position: relative;
+    /*GNB Line 박스의 부모*/
+    /*            background-color: #fff;*/
+    z-index: 9999;
+
+}
+
+/* ****** t1  ************************************************ */
+/* AK mall 로고 */
+.top .tlogo1 {
+    padding-top: 10px;
+
+    /* 글자설정 */
+    color: #666;
+    font-size: 0.75rem;
+    /* 12/16 = 0.75rem*/
+    font-weight: bold;
+    
+}
+
+
+/* 고객센터메뉴설정*/
+.top .tmenu {
+    padding-top: 10px;
+    position: relative;
+    right: -560px;
+    font-size: 0.75rem;
+}
+
+.top ul.tmenu li + li {
+    padding-left: 10px;
+}
+
+/* 카드등록로고 */
+.top .card {
+    padding: 0;
+    position: relative;
+    /* 부모자격*/
+    max-width: 100%;
+    /* 이미지 크기보다 싸고 있는 박스가 작아지면 박스크기에 100% 를 맞춘다! */
+}
+
+.top .tlogo2 {
+    position: relative;
+    left: 12px;
+    font-size: 0.75rem;
+}
+
+.top .tlogo2::before {
+    position: relative;
+    /* 부모는.card*/
+    bottom: -7px;
+    content: url(../images/icon-card.png);
+    display: inline-block;
+
+    padding-right: 5px;
+}
+
+
+/* 상단 고객관련 작은메뉴 */
+.cs{
+    position: relative;
+    /* 부모 */
+    overflow: hidden;
+}
+
+/* 클릭 시 높이설정 */
+.cs .tmenus.on{
+    height: 120px;
+    padding: 10px 0;
+}
+
+.cs .tmenus.on .wraptmenus{
+    height: 100px;
+}
+
+/*
+
+position: relative;
+    top: 0;
+    left: -10px;
+    width: 80px;
+    height: 120px;
+    
+    padding: 10px 0;
+    box-sizing: border-box;
+    
+    background-color: #fff;
+    box-shadow: inset 0px 0px 2px #ccc;
+    z-index: 1;
+*/
+
+
+/* 위치 조정 */
+.top .tmenus{
+    position: relative;
+    top: 0;
+    left: -10px;
+    width: 80px;
+    height: 0px;
+    
+    padding: 0px 0;
+    box-sizing: border-box;
+    
+    background-color: #fff;
+    box-shadow: inset 0px 0px 2px #ccc;
+    z-index: 1;
+}
+
+.wraptmenus{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+        
+    height: 0px;
+}
+
+.top .tmenus span{
+    display: block;
+    position: relative;
+    
+    width: 75px;
+/*    height: 15px;*/
+/*    left: 5%;*/
+    text-align: center;    
+}
+
+
+.top .tmenus span:nth-child(1)~span{
+    padding-top: 10px;
+}
+
+
+.top .tmenus span a{
+    width: 100%;
+    height: 100%;
+/*    text-align: center;*/
+}
+
+
+/* ****** t2  ************************************************ */
+/* 메인로고 이미지 */
+.top #hplogo {
+    position: relative;
+    top: 15px;
+    left: -10px;
+    width: 108px;
+    transform: scale(.8);
+}
+
+/* 로고 포커스라인해제 */
+.top #hplogo:focus {
+    outline: none;
+}
+
+/* 네비메뉴(.gnb) */
+.top .gnb {
+    position: absolute;
+    top: 70px;
+    left: 200px;
+    /* 부모? gnbbox */
+
+    /*높이값을 설정하여 자식요소 숨기기/보이기*/
+    height: 50px;
+    overflow: hidden;
+    /* 넘치는 자식요소 숨기기 */
+
+    transition: height .4s ease-out;
+    /* 트랜지션 속시이지 */
+
+                background-color: #fff;
+/*    outline: 5px dotted blue;*/
+
+    /* 폰트 */
+    font-size: 1.25rem;
+    /* 18/16*/
+}
+
+/* .gnb에 마우스 오버시 높이값 변경하여 하위메뉴 보이기*/
+.top .gnb:hover {
+    height: 220px;
+}
+
+/* GNB 메뉴 100% 라인박스 */
+.gnbline {
+    display: none;
+
+    position: absolute;
+    top: 148px;
+    left: 0;
+/*     부모는? #top*/
+
+    width: 100%;
+    height: 170px;
+    background: #fff url(../images/happyorder.jpg) no-repeat 20px center/200px;
+    border-bottom: 3px solid #cd0102;
+    box-shadow: 0 2px 1px #999;
+
+    transition: height .4s ease-out;
+/*     트랜지션 속시이지 : .gnb 와 동일한 트랜지션*/
+
+
+/*     해피오더배너조정 */
+    padding-top: 0px;
+    padding-left: 50px;
+                padding-bottom: 25px;
+    box-sizing: border-box;
+}
+
+/*        gnbline 중앙에 960px 박스를 가상요소로 넣고 배경넣기*/
+.gnbline::before {
+            content: "";
+            display: block;
+
+            position: relative;
+            margin-bottom: 20px;
+            left: 0;
+
+            width: 960px;
+            height: 100%;
+            
+            background: #fff url(images/happyorder.jpg) no-repeat;
+            background-position: -10px 50px;
+            background-size: 200px 120px
+        }
+
+
+
+/* gnb 큰메뉴 각 박스 */
+.top .gnb dl {
+    position: relative;
+    /* 부모자격 */
+
+    padding-left: 5px;
+    width: 150px;
+    height: 250px;
+    float: left;
+    /*옆으로 흐르게*/
+
+    /*            padding-left: 20px;*/
+    box-sizing: border-box;
+    text-align: center;
+
+/*    outline: 2px dotted red;*/
+}
+
+/* gnb 큰메뉴 */
+.top .gnb dt {
+    /* 위치조정 */
+    box-sizing: border-box;
+    padding-bottom: 20px;
+
+    /* 폰트 */
+    font-size: 1.125rem;
+    line-height: 36px;
+}
+
+
+/* gnb 작은메뉴 */
+.top .gnb dd {
+    /* 위치조정 */
+    box-sizing: border-box;
+
+    /* 줄간격 */
+    line-height: 30px;
+    font-size: 0.938rem;
+}
+
+.gnb dd .hbp {
+    display: block;
+    line-height: 15px;
+}
+
+
+/* 햄버거 메뉴버튼 */
+.top .tbtn img {
+    position: relative;
+    top: 30px;
+    left: 55px;
+
+    /*아이콘 크기조정*/
+    /*transform: scale(1.2);*/
+}
+
+
+/* ****** 7. 하단영역 ***************************************** */
+
+/* 고객센터문구 위치조정 */
+footer .cus {
+    padding-top: 20px;
+}
+
+/* 고객센터 이미지 */
+footer .cus::before {
+    content: url(../images/icon-customer.png);
+    display: inline-block;
+}
+
+/* 고객센터 문구들 */
+.custxt {
+    /*    display: inline;*/
+    vertical-align: 12px;
+    font-size: 0.875em;
+    color: #333;
+}
+
+.cusnum {
+    margin-left: 3px;
+    font-size: 1rem;
+    color: #222;
+}
+
+.custime {
+    margin-left: 12px;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+
+/*  ***** 회사정보 영역 **** */
+
+/* 첫째줄 위치조정 */
+ul.info {
+    position: relative;
+    top: 25px;
+
+    margin-left: 4px;
+
+    /* 글자*/
+    font-size: 0.875rem;
+    color: #666;
+    /*    letter-spacing: -1px;*/
+}
+
+/* 글자사이간격 */
+ul.info li:nth-child(1) ~ li {
+    padding-left: 15px;
+}
+
+
+/* 둘째줄 위치조정 */
+span.info {
+    position: relative;
+    top: 15px;
+
+    /* 글자 */
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/*
+
+span.info b{
+    font-family: Arial;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+*/
+
+.wrapinfo {
+    position: relative;
+    /*부모*/
+}
+
+.wrapinfo::before {
+    content: url(../images/logo-norton.png);
+    display: block;
+
+    position: absolute;
+    bottom: 50px;
+    
+    cursor: pointer;
+}
+
+.wrapinfo::after {
+    content: url(../images/logo-spc.png);
+    display: block;
+
+    position: absolute;
+    bottom: 50px;
+    left: 80px;
+    
+    cursor: pointer;
+}
+
+/* sns 바로가기 */
+ul.snslink {
+    position: relative;
+    top: 23px;
+    left: 63px;
+}
+
+ul.snslink li:nth-child(1)~li{
+    padding-left: 10px;
+}
+
+/* 패밀리사이트 */
+
+#fslink {
+    position: relative;
+    top: 20px;
+    left: 30px;
+
+    width: 140px;
+}

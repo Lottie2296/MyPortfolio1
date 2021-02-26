@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>grid - Happypiont</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+    
+        body{
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background: url(screencapture.png) no-repeat center top;
+
+            z-index: -1;
+            opacity: .5;
+        }
+
+        /*그리드뷰 재설정*/
+        .grid {
+            width: 1280px;
+            max-width: 100%;
+            /* 그리드도 같이 줄어들게! */
+            z-index: -1;
+        }
+
+
+        /*공통class //////////////////////// */
+
+
+        /*숨기기class*/
+        .dn {
+            display: none;
+        }
+
+        /*속박스 class*/
+        .ibx {
+            width: 1280px;
+            /*            maw100p
+            최대가로크기 100% 란 화면이 1280보다 작으면 100% */
+            max-width: 100%;
+
+            margin: 0 auto;
+            outline: 3px dashed blue;
+        }
+
+        /* 각 영역별 파티션 높이값 설정하기 */
+        /* 1. 상단영역 */
+        .t1 {
+            height: 50px;
+        }
+
+        .t2 {
+            margin-top: 10px;
+            height: 100px;
+        }
+
+
+        /* 2. 컨텐츠1영역 */
+        .c11 {
+            height: 800px;
+        }
+
+        /* 3. 컨텐츠2영역 */
+        .c21 {
+            margin: 40px 0;
+            height: 157px;
+        }
+
+        .c22 {
+            height: 318px;
+        }
+
+        .c23 {
+            height: 318px;
+        }
+
+        .c24 {
+            height: 318px;
+        }
+
+        .c25 {
+            height: 204px;
+        }
+
+        /* 4. 컨텐츠3영역 */
+        .c31 {
+            margin: 120px 0 55px 0;
+            height: 150px;
+        }
+
+        .c32 {
+            height: 450px;
+        }
+
+        .c33 {
+            height: 200px;
+        }
+
+        /* 5. 컨텐츠4영역 */
+        .c41 {
+            height: 150px;
+        }
+
+        .c42 {
+            margin-top: 50px;
+            height: 465px;
+        }
+
+        .c43 {
+            height: 220px;
+        }
+
+
+        /* 6. 컨텐츠5영역 */
+        .c51 {
+            height: 350px;
+        }
+
+        /* 7. 하단영역 */
+        .i1 {
+            height: 90px;
+        }
+
+        .i2 {
+            height: 210px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.상단영역 -->
+    <div id="top">
+        <header class="ibx clb top">
+            <h1 class="dn">해피포인트 메뉴</h1>
+            <!--             .col-*3-->
+            <div class="col-1 t1"></div>
+            <div class="col-6 t1"></div>
+            <div class="col-4 t1"></div>
+            <div class="col-1 t1"></div>
+            <div class="col-1 t2"></div>
+            <div class="col-1 t2"></div>
+            <div class="col-9 t2"></div>
+            <div class="col-1 t2"></div>
+        </header>
+    </div>
+    <!-- 2.컨텐츠영역1 -->
+    <div id="cont1">
+        <section class="ibx clb cont1">
+            <h2 class="dn">배너</h2>
+            <div class="col-5 c11"></div>
+            <div class="col-7 c11"></div>
+        </section>
+    </div>
+    <!-- 3.컨텐츠영역2 -->
+    <div id="cont2">
+        <section class="ibx clb cont2">
+            <h2 class="dn">해피포인트SNS</h2>
+            <div class="col-3 c21"></div>
+            <div class="col-6 c21"></div>
+            <div class="col-3 c21"></div>
+            <div class="col-3 c22"></div>
+            <div class="col-3 c22"></div>
+            <div class="col-3 c22"></div>
+            <div class="col-3 c22"></div>
+            <div class="col-3 c23"></div>
+            <div class="col-3 c23"></div>
+            <div class="col-3 c23"></div>
+            <div class="col-3 c23"></div>
+            <div class="col-3 c24"></div>
+            <div class="col-3 c24"></div>
+            <div class="col-3 c24"></div>
+            <div class="col-3 c24"></div>
+            <div class="col-12 c25"></div>
+        </section>
+    </div>
+    <!-- 4.컨텐츠영역3 -->
+    <div id="cont3">
+        <section class="ibx clb cont3">
+            <h2 class="dn">제휴안내</h2>
+            <div class="col-3 c31"></div>
+            <div class="col-6 c31"></div>
+            <div class="col-3 c31"></div>
+            <div class="col-3 c32"></div>
+            <div class="col-3 c32"></div>
+            <div class="col-3 c32"></div>
+            <div class="col-3 c32"></div>
+            <div class="col-12 c33"></div>
+        </section>
+    </div>
+    <!-- 5.컨텐츠영역4 -->
+    <div id="cont4">
+        <section class="ibx clb cont4">
+            <h2 class="dn">공지사항</h2>
+            <div class="col-3 c41"></div>
+            <div class="col-6 c41"></div>
+            <div class="col-2 c41"></div>
+            <div class="col-1 c41"></div>
+            <div class="col-1 c42"></div>
+            <div class="col-2 c42"></div>
+            <div class="col-6 c42"></div>
+            <div class="col-2 c42"></div>
+            <div class="col-1 c42"></div>
+            <div class="col-12 c43"></div>
+        </section>
+    </div>
+    <!-- 6.컨텐츠영역5 -->
+    <div id="cont5">
+        <section class="ibx clb cont5">
+            <h2 class="dn">배너(APP광고)</h2>
+            <div class="col-12 c51"></div>
+        </section>
+    </div>
+    <!-- 7. 하단영역 -->
+    <div id="info">
+        <footer class="ibx clb info">
+            <h2 class="dn">하단정보링크</h2>
+            <div class="col-6 i1"></div>
+            <div class="col-3 i1"></div>
+            <div class="col-3 i1"></div>
+            <div class="col-8 i2"></div>
+            <div class="col-1 i2"></div>
+            <div class="col-3 i2"></div>
+        </footer>
+    </div>
+
+
+    <!--그리드뷰:그리드 시스템 비주얼 뷰-->
+    <ul class="grid">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</body></html>
