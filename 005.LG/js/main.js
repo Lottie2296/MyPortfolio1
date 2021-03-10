@@ -43,14 +43,14 @@ $(function () { ///////// jQB ////////////////////////////
 //    let banner = $(".banner");
     let banner = $(".slide");
 
-    // 이미지순번
-//    let bnum = 0;
+     이미지순번
+    let bnum = 0;
     // 선택된 순번의 li의 배경을 순번대로 넣기
     // 변경대상: .banner 의 배경
 
-    //배너 순번증가
-//    bnum++; //1씩증가
-//    if (bnum === 4) bnum = 0; //한계값
+    배너 순번증가
+    bnum++; //1씩증가
+    if (bnum === 3) bnum = 0; //한계값
 
     // 순번과 매칭된 이미지를 배경이미지로 넣기
 //    banner.eq(bnum)
@@ -62,17 +62,21 @@ $(function () { ///////// jQB ////////////////////////////
 //        }, 4000); /////////////////////////////animate ////////
 
 let autoSlide = function () {
-        autoB = setInterval(function () {
+    
+        autoB = setInterval(function () { // 애니전
 
-            banner.animate({
-                opacity:1
+            banner.css({
+                transition: "opacity 4s",
+                opacity:0
             }, 400, "easeOutCubic",
+                   )},   
+                           
             function () { //애니후
                 // 맨앞li 맨뒤로 보내기
-                $(this).append(banner.find("li").first())
+                $(this).append(banner.eq(bnum).first())
                     .css({
                     transition: "opacity 4s",
-                        opacity:0
+                        opacity:1
                     });
 
             }); /// animate /////
