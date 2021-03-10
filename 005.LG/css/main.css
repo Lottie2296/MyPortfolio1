@@ -1,0 +1,373 @@
+@charset "utf-8";
+/* 메인 css - main.css */
+
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow-x: hidden;
+}
+
+/*공통 class*/
+.page {
+    width: 100%;
+    height: 100%;
+    /*    overflow: hidden;*/
+}
+
+/*IR class*/
+.ir {
+    display: block;
+    overflow: hidden;
+    /* 옆으로 정렬되는지 확인여부*/
+    text-indent: -1000em;
+    /* 글자 들여쓰기로 글자숨기기 */
+}
+
+/*숨김class*/
+.bld {
+    display: none;
+}
+
+/* ***************************************************** */
+/* 1. 상단영역 */
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    /*    background-color: rgb(0, 0, 0, 0.1);*/
+    z-index: 9999;
+}
+
+/*1-1.로고*/
+.tlogo {
+    position: absolute;
+    top: 50%;
+    left: 10rem;
+    transform: translateY(-50%);
+    width: 9rem;
+    height: 4rem;
+    min-width: 80px;
+    /* vw단위는 보이는 화면기준*/
+    /*최소한계크기 지정*/
+    /* 색이반고윙/크*/
+    background: url(../images/sprite_pc.png) no-repeat -70px -205px;
+    cursor: pointer;
+
+    /*outline: 1px solid red;*/
+
+}
+
+/*1-2.메뉴*/
+/* *****  GNB  ******************************************** */
+#gnb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*    padding-bottom: 2rem;*/
+
+    width: 80rem;
+    /* 12rem*5 + 5rem*4*/
+    height: 10rem;
+    outline: 1px solid red;
+}
+
+#gnb > li {
+    width: 16rem;
+    height: 10rem;
+    line-height: 10rem;
+    font-size: 1.8rem;
+}
+
+/*
+#gnb li + li{
+    padding-left: 5rem;
+}
+*/
+
+#gnb > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    color: #000;
+    text-align: center;
+}
+
+
+/* 마우스 오버시, 선택on 메뉴*/
+#gnb > li:hover > a,
+#gnb > li.on > a {
+    color: #BB0841;
+    font-weight: bold;
+}
+
+/* #gnb 뒷판 */
+.top.on::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10rem;
+    width: 100%;
+    height: 5rem;
+    background-color: #eee;
+    transition: all .4s;
+}
+
+/*
+
+#gnb>li.on{
+    height: 5rem;
+    transition: all .4s;
+}
+*/
+
+/*서브메뉴 디자인*/
+.smenu {
+    position: absolute;
+    background-color: #eee;
+    /*서브메뉴숨기기*/
+    height: 0;
+    /* 0 에서 5 */
+    overflow: hidden;
+
+    /* 하위메뉴 위치 세부조정 */
+    padding-left: 3rem;
+}
+
+/* 하위메뉴 위치 세부조정 : 4번째만 왼쪾으로 더*/
+.smenu:nth-child(4){
+    padding-left: 20rem;
+}
+
+/* #gnb>li 에 hover 시 메뉴등장하기*/
+#gnb > li > .smenu > li > a {
+    display: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #000;
+    text-align: center;
+}
+
+#gnb > li.on > .smenu{
+    height: 5rem;
+}
+#gnb > li.on > .smenu > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    color: #555;
+    text-align: center;
+}
+
+.smenu > li {
+    /*            width: 200px;*/
+    height: 5rem;
+    padding: 0 10px;
+    line-height: 5rem;
+    /*변경2 - li 하나 당 크기 없애고 양쪽패딩*/
+    /*(부모박스에서 옆으로 흐르게)*/
+    /*부모박스의 가로크기를 채운다 : 옆으로 흐르지 못한다!*/
+}
+
+/*하위 메뉴의 li에 마우스 오버 시 a요소의 글자색 변경*/
+#gnb > li.on > .smenu > li:hover > a {
+    position: relative;
+    /* 가상요소부모자격*/
+    color: #BB0841;
+}
+
+/*하위 메뉴의 li에 마우스 오버 시 해당 li에 밑줄 생기게하기*/
+.smenu > li:hover > a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    
+    width: 100%;
+    height: .3rem;
+    
+    background: #bb0841;
+    /* 트랜지션 속시이지 */
+    transition: all 1s ease-in;
+}
+
+/* ********************************************  GNB  ***** */
+
+/*1-3.콤보박스 버튼*/
+#lang {
+    /* 위치 */
+    position: absolute;
+    top: 50%;
+    right: 15rem;
+    transform: translateY(-50%);
+    /* 크기 */
+    width: 6rem;
+    height: 3rem;
+    min-width: 60px;
+    /*    outline: 1px solid red;*/
+    /* 박스 디자인 */
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    /* 글씨*/
+    font-weight: bold;
+}
+
+/*1-4.링크버튼*/
+#lkbox {
+    /* 링크박스위치*/
+    position: absolute;
+    top: 50%;
+    right: 11rem;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3rem;
+    min-width: 35px;
+    /* vw단위는 보이는 화면기준*/
+    /*최소한계크기 지정*/
+    /* 색이반고윙/크*/
+    background: url(../images/sprite_pc.png) no-repeat -230px -155px;
+    outline: 1px solid red;
+    /* 커서 */
+    cursor: pointer;
+}
+
+
+
+/* 2. 컨텐츠 영역 *************************************** */
+/* 2-1. 배너영역 *************************************** */
+
+/*
+#ban{
+    background-color: #e1ffcf;
+}
+*/
+
+/* 배너위치 */
+.bwrap{
+    position: relative;
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 87vw;
+    height: 87vh;
+    outline: 3px solid green;
+}
+
+/* 배너사진 */
+.slide{
+    width: 100%;
+    height: 100%;
+    outline: 3px solid green;
+    overflow: hidden;
+}
+
+.ban1{
+    width: 100%;
+    height: 100%;
+    background: url(../images/main_01.png);
+}
+
+.ban2{
+    width: 100%;
+    height: 100%;
+    background: url(../images/main_02.png);
+}
+
+.ban3{
+    width: 100%;
+    height: 100%;
+    background: url(../images/main_03.png);
+}
+
+.ban4{
+    width: 100%;
+    height: 100%;
+    background: url(../images/main_04.png);
+}
+
+/* 배너내부로고 */
+.blogo1{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 489px;
+    height: 405px;
+    background: url(../images/img_motive_pc_l.png);
+}
+.blogo2{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 217px;
+    height: 210px;
+    background: url(../images/img_motive_pc_g.png);
+}
+
+
+
+
+
+
+
+
+/*  2-2.미디어영역  *************************************** */
+#media{
+    background: #ffc8c8;
+}
+/*  2-3. CSR영역 ******************************************* */
+#csr{
+    background: #c8d7ff;
+}
+/*  2-4. 바로가기영역*************************************** */
+#gogo{
+    background: #d7a8ff;
+}
+
+/* **************************************************** */
+
+/* 3. 배너블릿박스 *************************************** */
+.indic {
+    position: fixed;
+    top: 50%;
+    right: 3%;
+    width: 10px;
+    height: 168px;
+    z-index: 1;
+}
+
+.indic > li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 10px 0;
+    background-color: transparent;
+    border: 2px solid #000;
+    opacity: .5;
+}
+
+.indic a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 선택블릿 on, 마우스오버시 */
+.indic li.on {
+    background-color: #000;
+    opacity: 1;
+}
+
+/* **************************************************** */
