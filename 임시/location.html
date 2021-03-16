@@ -138,10 +138,6 @@
                     4.소스에 붙여 넣는다.
                 -->
                 <!--네이버맵-->
-                <!--
-                하단 테이블 형태는 네이버옛날지도 API !!
-                네이버맵은 서비스가 아직 미비하여 기존 서비스맵으로 대체함
-                -->
                 <table class="nmap maps">
                     <tbody>
                         <tr>
@@ -161,30 +157,33 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <!--다음맵 (카카오맵)-->
+                <!--
+                    네이버맵은 서비스가 아직 미비하여 
+                    기존 서비스맵으로 대체함
+                -->
+                <!--다음맵-->
                 <!-- * 카카오맵 - 지도퍼가기 -->
                 <!-- 1. 지도 노드 -->
-                <div id="daumRoughmapContainer1615860960220" class="root_daum_roughmap root_daum_roughmap_landing dmap maps"></div>
-            </div> <!-- #map-->
+                <div id="daumRoughmapContainer1615860935571" class="root_daum_roughmap root_daum_roughmap_landing dmap maps"></div>
+
+            </div><!--#map-->
             
-             <!--
-	            2. 설치 스크립트
-	            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+
+                <!--
+                    2. 설치 스크립트
+                    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
                 -->
                 <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 
                 <!-- 3. 실행 스크립트 -->
                 <script charset="UTF-8">
                     new daum.roughmap.Lander({
-                        "timestamp": "1615860960220",
-                        "key": "24unw",
+                        "timestamp": "1615860935571",
+                        "key": "24unm",
                         "mapWidth": "700",
                         "mapHeight": "400"
                     }).render();
                 </script>
-
-       
         </main>
         <!--3.하단영역-->
         <footer id="info">
@@ -199,4 +198,4 @@
 
 
 
-</body></html> 
+</body></html>
