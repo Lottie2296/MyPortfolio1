@@ -2,22 +2,104 @@
 /* 메인 css - main.css */
 
 @import url(reset.css);
+@import url(gridSet.css);
+@import url(gridView.css);
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 /* font-family: 'Noto Sans KR', sans-serif; */
+/* 메인컬러 #BB0841; */
 
 html,
 body {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     font-family: 'Noto Sans KR', sans-serif;
-    overflow-x: hidden;
+
 }
+
+body {
+    overflow: hidden;
+    position: relative;
+}
+
+/* ******************************************************************** */
+
+/* ***** 디자인확인용 *************************************************** */
+
+/* 1페이지 */
+/*#ban::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: url(../images/grid_02.png) no-repeat center top/100%;
+
+    z-index: -1;
+    opacity: 0.5;
+}*/
+
+/* 2페이지 */
+#media::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: url(../images/grid_02.png) no-repeat center top/100%;
+
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* 3페이지 */
+/* #csr::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: url(../images/grid_03.png) no-repeat center top/100%;
+
+    z-index: -1;
+    opacity: 0.5;
+} */
+/* 4페이지 */
+#gogo::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: url(../images/grid_04.png) no-repeat center top/100%;
+
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ******************************************************************** */
+/* ******************************************************************** */
 
 /*공통 class*/
 .page {
     width: 100%;
     height: 100%;
     /*    overflow: hidden;*/
+}
+
+h2::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 12px;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #BB0841;
 }
 
 /*IR class*/
@@ -41,19 +123,20 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 10rem;
-    /*    background-color: rgb(0, 0, 0, 0.1);*/
-    z-index: 9999;
+    height: 13vh;
+    background-color: #fff;
+    z-index: 1;
+    /*    opacity: 0.5;*/
 }
 
 /*1-1.로고*/
 .tlogo {
     position: absolute;
     top: 50%;
-    left: 10rem;
+    left: 6vw;
     transform: translateY(-50%);
-    width: 9rem;
-    height: 4rem;
+    width: 100px;
+    height: 40px;
     min-width: 80px;
     /* vw단위는 보이는 화면기준*/
     /*최소한계크기 지정*/
@@ -74,16 +157,18 @@ body {
     transform: translate(-50%, -50%);
     /*    padding-bottom: 2rem;*/
 
-    width: 80rem;
+    width: 52.5vw;
     /* 12rem*5 + 5rem*4*/
-    height: 10rem;
-    outline: 1px solid red;
+    height: 6vh;
+    /*outline: 1px solid red;*/
 }
 
 #gnb > li {
-    width: 16rem;
-    height: 10rem;
-    line-height: 10rem;
+    position: relative;
+    top: 20%;
+    width: 10.5vw;
+    height: 10vh;
+    /*    line-height: 18vh;*/
     font-size: 1.8rem;
 }
 
@@ -111,13 +196,13 @@ body {
 }
 
 /* #gnb 뒷판 */
-.top.on::before{
+.top.on::before {
     content: "";
     display: block;
     position: absolute;
-    top: 10rem;
+    top: 13vh;
     width: 100%;
-    height: 5rem;
+    height: 7vh;
     background-color: #eee;
     transition: all .4s;
 }
@@ -133,6 +218,10 @@ body {
 /*서브메뉴 디자인*/
 .smenu {
     position: absolute;
+    top: 82%;
+    left: 50%;
+    transform: translateX(-10%);
+    display: flex;
     background-color: #eee;
     /*서브메뉴숨기기*/
     height: 0;
@@ -140,29 +229,32 @@ body {
     overflow: hidden;
 
     /* 하위메뉴 위치 세부조정 */
-    padding-left: 3rem;
+    /*    padding-left: 3vw;*/
 }
 
 /* 하위메뉴 위치 세부조정 : 4번째만 왼쪾으로 더*/
-.smenu:nth-child(4){
-    padding-left: 20rem;
+#gnb > li > .smenu:nth-of-type(4) {
+    transform: translateX(-50%);
 }
 
 /* #gnb>li 에 hover 시 메뉴등장하기*/
 #gnb > li > .smenu > li > a {
-    display: none;
+    /*    display: none;*/
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     background-color: transparent;
     color: #000;
     text-align: center;
+    white-space: nowrap;
 }
 
-#gnb > li.on > .smenu{
-    height: 5rem;
+#gnb > li.on > .smenu {
+    height: 7vh;
 }
+
 #gnb > li.on > .smenu > li > a {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
@@ -173,12 +265,13 @@ body {
 
 .smenu > li {
     /*            width: 200px;*/
-    height: 5rem;
+    height: 7vh;
     padding: 0 10px;
-    line-height: 5rem;
+    line-height: 7vh;
     /*변경2 - li 하나 당 크기 없애고 양쪽패딩*/
     /*(부모박스에서 옆으로 흐르게)*/
     /*부모박스의 가로크기를 채운다 : 옆으로 흐르지 못한다!*/
+    float: none;
 }
 
 /*하위 메뉴의 li에 마우스 오버 시 a요소의 글자색 변경*/
@@ -189,18 +282,25 @@ body {
 }
 
 /*하위 메뉴의 li에 마우스 오버 시 해당 li에 밑줄 생기게하기*/
-.smenu > li:hover > a::after {
+.smenu > li > a::after {
     content: '';
     display: block;
     position: absolute;
     bottom: 0px;
-    
-    width: 100%;
+    left: 50%;
+
+    width: 0%;
     height: .3rem;
-    
+
     background: #bb0841;
     /* 트랜지션 속시이지 */
-    transition: all 1s ease-in;
+    transition: all .2s ease-in;
+}
+
+/*하위 메뉴의 li에 마우스 오버 시 해당 li에 밑줄 생기게하기*/
+.smenu > li:hover > a::after {
+    left: 0%;
+    width: 100%;
 }
 
 /* ********************************************  GNB  ***** */
@@ -210,11 +310,11 @@ body {
     /* 위치 */
     position: absolute;
     top: 50%;
-    right: 15rem;
+    right: 20vh;
     transform: translateY(-50%);
     /* 크기 */
-    width: 6rem;
-    height: 3rem;
+    width: 60px;
+    height: 30px;
     min-width: 60px;
     /*    outline: 1px solid red;*/
     /* 박스 디자인 */
@@ -230,16 +330,16 @@ body {
     /* 링크박스위치*/
     position: absolute;
     top: 50%;
-    right: 11rem;
+    right: 12vh;
     transform: translateY(-50%);
-    width: 3.5rem;
-    height: 3rem;
+    width: 35px;
+    height: 30px;
     min-width: 35px;
     /* vw단위는 보이는 화면기준*/
     /*최소한계크기 지정*/
     /* 색이반고윙/크*/
-    background: url(../images/sprite_pc.png) no-repeat -230px -155px;
-    outline: 1px solid red;
+    background: #FFF url(../images/sprite_pc.png) no-repeat -230px -155px;
+    /*outline: 1px solid red;*/
     /* 커서 */
     cursor: pointer;
 }
@@ -256,100 +356,605 @@ body {
 */
 
 /* 배너위치 */
-.bwrap{
+.bwrap {
     position: relative;
-    top: 10rem;
+    top: 13.5vh;
     left: 50%;
     transform: translateX(-50%);
     width: 87vw;
     height: 86.5vmin;
-/*    outline: 3px solid green;*/
+    box-sizing: border-box;
+    /*    outline: 3px solid green;*/
 }
 
-/* 배너사진 */
-.slide{
+/* * 배너슬라이드 */
+/* ul li 모두absolute 로 겹치게 */
+.slide,
+.slide li {
+    position: absolute;
+    top: auto;
+    left: 0;
     width: 100%;
     height: 100%;
-/*    outline: 3px solid green;*/
-    overflow: hidden;
 }
 
-.banner{
+
+/* 슬라이드 리스트 공통*/
+.slide li {
+    opacity: 0;
+    /* 트랜지션 속시이지*/
+    transition: opacity 1s ease-in;
+}
+
+/* 보이는 리스트 class*/
+/* on 이라는 클래스를 설정한 li 디자인*/
+.slide li.on {
     opacity: 1;
+    z-index: 1;
 }
 
-.banner.on{
-    opacity: 1;
-}
-
-.ban1{
-    width: 100%;
-    height: 100%;
+.slide > li:nth-child(1) {
     background: url(../images/main_01.png) no-repeat center;
 }
 
-.ban2{
-    width: 100%;
-    height: 100%;
+.slide > li:nth-child(2) {
     background: url(../images/main_02.png) no-repeat center;
 }
 
-.ban3{
-    width: 100%;
-    height: 100%;
+.slide > li:nth-child(3) {
     background: url(../images/main_03.png) no-repeat center;
 }
 
-.ban4{
-    width: 100%;
-    height: 100%;
+.slide > li:nth-child(4) {
     background: url(../images/main_04.png) no-repeat center;
 }
 
 /* 배너내부로고 */
-.blogo1{
+.blogo1 {
     position: absolute;
     top: 0;
     left: 0px;
     width: 489px;
     height: 405px;
     background: url(../images/img_motive_pc_l.png);
+    z-index: 2;
 }
-.blogo2{
+
+.blogo2 {
     position: absolute;
     bottom: 0;
     right: 0;
     width: 217px;
     height: 210px;
     background: url(../images/img_motive_pc_g.png);
+    z-index: 2;
 }
 
+/* 스크롤 안내 아이콘 */
+.sguide {
+    position: absolute;
+    top: 85%;
+    right: 3%;
+    width: 12px;
+    height: 50px;
+    overflow: hidden;
+    /* 이시이지반방마 */
+    animation: sguide 1.2s ease-in-out .5s infinite;
+}
 
+/* .sguide 애니메이션 */
+@keyframes sguide {
+    from {
+        height: 50px;
+    }
 
+    to {
+        height: 101px;
+    }
+}
 
-
-
-
+/* 키프레임 */
 
 /*  2-2.미디어영역  *************************************** */
-#media{
-    background: #ffc8c8;
+#media {
+    position: relative;
+    /* 부모자격*/
+    /*    background: #ffc8c8;*/
+
 }
+
+/* 미디어 전체박스 */
+.mcont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65vw;
+    height: 82vh;
+    transform: translate(-50%, -45%);
+    border: 1px solid red;
+
+}
+
+/* 미디어 큰제목*/
+.mcont > h2 {
+    position: relative;
+    left: 4vw;
+    font-size: 6rem;
+}
+
+/*
+공통으로뺌
+.mcont > h2::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #BB0841;
+}
+*/
+
+/* swiper 겉박스 */
+.mwrap {
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    position: relative;
+    /*    right: 1%;*/
+    width: 100%;
+    height: 36vh;
+    /*    padding: 0 2%;*/
+    border: 1px solid green;
+}
+
+/*
+.mwrap>ul{
+    width: 900px;
+    height: 30vh;
+    overflow: hidden;
+    margin: 0 auto;
+}
+*/
+
+/* swiper 배너 각 박스 */
+li.msbx {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    /*    padding: 0 1%;*/
+    width: 15%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+
+/* li.msbx + li.msbx {
+    padding-left: 20px;
+} */
+
+/* swiper 박스내부 이미지 */
+li.msbx img {
+    /*    justify-content: center;*/
+    width: 100%
+}
+
+/* swiper 박스내부 제목 */
+li.msbx figcaption b {
+    display: block;
+    font-size: 1.6rem;
+    color: #BB0841;
+}
+
+/* swiper 박스내부 설명 말줄임 */
+li.msbx figcaption {
+    /*position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+
+            width: 65%;
+            height: 35%;*/
+
+    color: #000;
+    font-size: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+*/
+/* ************************************************************** */
+/* [ 넘치는 글자 말줄임 표시하기 ]*/
+
+/* ★ 1줄짜리 처리는 1~4번 사용 ★
+       ★ 여러줄 처리(2줄이상)은 줄바꿈방지 2번을 하지 않는다! ★*/
+
+/* 1. 넘치는 요소 숨기기 <공통> */
+/*    overflow: hidden;*/
+/* 박스크기를 줘야 숨기기가 된다! >>> 3번 ! */
+
+/* 2. 줄바꿈방지 : 한줄일때만 사용!! <한줄용>*/
+/*white-space: nowrap;*/
+
+/* 3. 박스가로크기를 지정해야 숨겨진다! <공통> */
+/*    width: 100%;*/
+
+/* 4. 말줄임표 <공통>*/
+/*    text-overflow: ellipsis;*/
+/* 입술에 손대며 말하지마! lipsis~ */
+/* cf) 글씨체에 따라 말줄임표 표시가 바닥에 붙는게 있고, 중간에 생기는 것이 있다.*/
+
+/*
+        [ 밴더사 접두어 : vender prefix ]
+        - 브라우저 밴더사들 : 크롬, 사파리, 파이어폭스, 익스플로러, 오페라 ... 
+        -webkit- 밴더사접두어로 크롬, 사파리 브라우저용! (크롱과 사파리로 웹킷을 가지고 놀러간다!)
+        -o- 오페라
+        -ms- 익스플로러
+        -moz- 파이어폭스(뭐가 그리 모질라 불여우!)
+    
+        >>> 여러줄용 접두어 속성은 다른 최신브라우저에서 모두 적용된다!
+    */
+
+
+/* 5. display 설정을 변경 <여러줄용>*/
+/*    display: -webkit-box;*/
+
+/* 6. 처리할 라인 수를 지정 <여러줄용>*/
+/*    -webkit-line-clamp: 2;*/
+/* 붉은색으로 뜨는 것은 공식적이지 않기 때문, 하지만 네이버 등 대형사에서도 쓰는 방법이다*/
+
+/* 7. 여러줄처리 진행방향 설정 <여러줄용> */
+/*- 주로 세로방향진행(vertical)*/
+/*    -webkit-box-orient: vertical;*/
+
+/* 8. 단어 단위로 떨어져서 생기는 공백 없애기 위해 글자 단위로 부수기! */
+/*    word-break: break-all;*/
+
+
+/* 만일 아래쪽에 글자 일부가 보일 경우 높이값을 설정해준다! */
+/*    height: 3.4rem;*/
+
+/* ************************************************************** */
+
+/* swiper 롤링버튼 */
+.mcont > button#prevbtn {
+    /* 색이반고윙/크 */
+    background: transparent url(../images/main_prev.png) no-repeat;
+    width: 26px;
+    height: 48px;
+}
+
+/* swiper 불릿버튼 */
+.swiper-pagination-clickable.swiper-pagination-bullets {
+    bottom: 0px;
+    /*    padding-right: 00px; */
+}
+
+/* 미디어컨텐츠 영역 - 하단 이미지들 */
+.mimgbx {
+    position: relative;
+    top: 5%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    text-align: center;
+    margin: 0 auto;
+    outline: 1px solid aqua;
+    box-sizing: border-box;
+}
+
+.mimgbx > img {
+    width: 50%;
+}
+
+.mimgbx > img:first-child {
+    /*    padding-right: 1%;*/
+}
+
+.mimgbx > img:first-child::before {
+    content: url(../images/btn_play_small.png);
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+}
+
+#prevbtn {
+    position: absolute;
+    top: 32%;
+    left: -30px;
+    width: 26px;
+    height: 48px;
+    z-index: 1;
+    background: url(../images/main_prev.png) no-repeat;
+    border: none;
+}
+
+#nextbtn {
+    position: absolute;
+    top: 32%;
+    right: -30px;
+    width: 26px;
+    height: 48px;
+    z-index: 1;
+    background: url(../images/main_next.png) no-repeat;
+    border: none;
+
+}
+button:focus{
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+
 /*  2-3. CSR영역 ******************************************* */
-#csr{
-    background: #c8d7ff;
+#csr {
+    position: relative;
+    /*    background: #c8d7ff;*/
 }
+
+.ccont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 58vw;
+    height: 86vh;
+    transform: translate(-50%, -41%);
+    /* outline: 1px solid red; */
+
+}
+
+.ccont > h2 {
+    position: relative;
+    /* left: 4vw; */
+    font-size: 6rem;
+}
+
+/* csr 부가설명 */
+.cstit {
+    position: relative;
+    display: block;
+    /* left: 4vw; */
+    top: 1vh;
+    font-size: 2.2rem;
+    margin-bottom: 8vh;
+}
+
+
+/* csr 배너들 wrap 큰박스*/
+.cimgbx {
+    position: relative;
+    bottom: -11px;
+
+    width: 58vw;
+    height: 70%;
+
+    /* border: 1px solid aqua; */
+}
+
+.cimgbx > ul {
+    position: relative;
+    width: 58vw;
+    height: 100%;
+
+}
+
+/* csr 각 이미지 배너 박스 크기*/
+.cimgbx li.clist {
+    position: relative; /* 부모자격 */
+    width: 23.5%;
+    height: 100%;
+    /* outline: 1px solid green; */
+    
+    cursor: pointer;
+}
+
+.cimgbx li + li {
+    margin-left: 2%;
+}
+
+/*  csr 각 이미지 배경화면  */
+
+.cimgbx li:nth-child(1) {
+    background: url(../images/main_csr01_v2.jpg) no-repeat center/130%;
+}
+.cimgbx li:nth-child(2) {
+    background: url(../images/main_csr02_v2.jpg) no-repeat center/130%;
+}
+.cimgbx li:nth-child(3) {
+    background: url(../images/main_csr03_v2.jpg) no-repeat center/130%;
+}
+.cimgbx li:nth-child(4) {
+    background: url(../images/main_csr04_v2.jpg) no-repeat center/130%;
+}
+
+/* CSR list 부분 글자 세부설정 */
+.clist span{
+    position: relative;
+    top: 17%;
+    left: 10%;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.clist span b{
+    display: block;
+    font-size: 2.2rem;
+    margin-top: 2rem;
+}
+
+/*  CSR list 부분 바로가기 버튼설정  */
+.clist button{
+    position: relative;
+    top: -2%;
+    
+    width: 46%;
+    height: 7%;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+
+    color: #fff;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.clist:first-child button{
+    position: relative;
+    top: 5%;
+    
+    width: 46%;
+    height: 7%;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+
+    color: #fff;
+    background-color: transparent;
+}
+
+/*  이미지 마우스 오버시 바로가기 색깔변경 */
+.cimgbx li.clist:hover button{
+    border: 1px solid #BB0841;
+    background-color: #BB0841;
+}
+
 /*  2-4. 바로가기영역*************************************** */
-#gogo{
-    background: #d7a8ff;
+#gogo {
+    position: relative;
+    /* background: #d7a8ff; */
+    
 }
+
+/* 바로가기 영역 전체 wrap 박스 */
+.gcont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 58vw;
+    height: 58vh;
+    transform: translate(-50%, -64%);
+    outline: 1px solid red;
+
+}
+
+/* 바로가기영역 제목 */
+.gcont > h2 {
+    position: relative;
+    /* left: 4vw; */
+    font-size: 6rem;
+}
+
+/* 바로가기영역 리스트 내부 부모박스 flex설정 */
+.gcont ul{
+    flex-wrap: wrap;
+    /* 
+        flex-wrap 속성 
+        - 박스보다 아이템 요소가 많을 때
+        아래줄로 줄바꿈하려면 wrap 로 설정한다!
+        기본값은 nowrap (안쌈)
+    */
+    
+    
+    /* 수평간격일정*/
+    justify-content: space-around;
+    /* 여러줄일때 수직간격은??? */
+    /* align-item 은 한줄일 때임~!*/
+    
+    
+    /* 여러줄일 때 수직간격 */
+    align-content: space-between;
+
+    position: relative;
+    top: 7%;
+    width: 100%;
+    height: 42vh;
+    outline: 1px solid green;
+}
+
+/* 바로가기 리스트박스 */
+.glist{
+    position: relative;
+    /* 부모자격 */
+    width: 285px;
+    height: 150px;
+    margin: 0.5%;
+    justify-content: center;
+    
+    overflow: hidden;
+    transition: background 4s linear;
+}
+
+/* 반투명 덮개 가상요소 */
+.glist::before{
+    /* content: linear-gradient(to bottom, transparent #000); */
+    content: url(../images/img_movie_dimm.png);
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -40px;
+    /* background-image: linear-gradient(to bottom, transparent #000); */
+
+    overflow: hidden;
+}
+
+/* 바로가기 리스트 이미지 */
+.glist:nth-child(1){
+    background: url(../images/main_go1.png) no-repeat center/cover;
+}
+
+.glist:nth-child(2){
+    background: url(../images/main_go2.png) no-repeat center -40px/cover;
+}
+
+.glist:nth-child(3){
+    background: url(../images/main_go3.png) no-repeat center -40px/cover;
+}
+
+.glist:nth-child(4){
+    background: url(../images/main_go4.png) no-repeat top/cover;
+}
+
+.glist:nth-child(5){
+    background: url(../images/main_go5.png) no-repeat top/cover;
+}
+
+.glist:nth-child(6){
+    background: url(../images/main_go6.png) no-repeat left/cover;
+}
+
+.glist:hover{
+    /* transform: scale(1.4);
+    transition: background 4s linear; */
+    /* transition: background 2s linear; */
+    
+    animation: gscale 2s linear forwards;
+}
+
+@keyframes gscale{
+    from{
+        background-size: 100%;
+    }
+    to{
+        background-size: 120%;
+    }
+} 
 
 /* **************************************************** */
-
 /* 3. 배너블릿박스 *************************************** */
 .indic {
     position: fixed;
-    top: 50%;
+    top: 40%;
     right: 3%;
     width: 10px;
     height: 168px;
@@ -376,6 +981,24 @@ body {
 .indic li.on {
     background-color: #000;
     opacity: 1;
+}
+
+/* 4. 좌측이미지 */
+/* 좌측 이미지 */
+.aside1 > img {
+    position: absolute;
+    top: 49%;
+    left: 2.5%;
+    width: 12px;
+    height: 120px;
+}
+
+.aside2 > img {
+    position: absolute;
+    top: 42%;
+    left: 2.5%;
+    width: 16px;
+    height: 216px;
 }
 
 /* **************************************************** */

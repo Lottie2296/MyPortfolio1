@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LG</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/swiper.min.js"></script>
     <script src="js/jquery-touch-punch.min.js"></script>
     <script src="js/autoScroll.js"></script>
     <script src="js/main.js"></script>
@@ -117,56 +119,255 @@
         <!--배너슬라이드-->
         <div class="bwrap">
             <ul class="slide">
-                <li class="banner ban1">
+                <li class="on">
                     <span class="ir">배너1</span>
                 </li>
-                <li class="banner ban2">
+                <li>
                     <span class="ir">배너2</span>
                 </li>
-                <li class="banner ban3">
+                <li>
                     <span class="ir">배너3</span>
                 </li>
-                <li class="banner ban4">
+                <li>
                     <span class="ir">배너4</span>
                 </li>
             </ul>
             <div class="blogo1"></div>
             <div class="blogo2"></div>
         </div>
+        <div class="sguide">
+            <img src="images/main_icon_scroll.png" alt="스크롤 안내 아이콘">
+        </div>
     </section>
 
     <!--2-2.미디어영역 -->
     <section id="media" class="media page">
-        <!-- 미디어 페이지제목-->
-        <h2>미디어</h2>
         <!-- 미디어 컨텐츠 상자 -->
         <div class="mcont">
+            <!-- 미디어 페이지제목-->
+            <h2>미디어</h2>
             <!-- 미디어 롤링배너 wrap -->
-            <div class="mwrap">
+            <div class="mwrap swiper-container">
                 <!-- 미디어 페이지 롤링 배너 : 12개???-->
-                <li class="mbx mbx1">
-                    <a href="#">
-                        <img src="" alt="">
-                        <span class="mtit1"></span>
-                        <span class="mtit2"></span>
-                    </a>
-                </li>
+                <ul class="swiper-wrapper">
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media12.png" alt="LG디스플레이">
+                            <figcaption>
+                                <b>LG디스플레이1</b>
+                                LG디스플레이, 한국디스플레이산업협회 제 8대 회장에 정호영 LG디스플레이 사장 취임
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media11.png" alt="LG전자">
+                            <figcaption>
+                                <b>LG전자2</b>
+                                LG전자, 도심 최고급 리조트서 사운드 체험마케팅 실시
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media10.png" alt="LG생활건강">
+                            <figcaption>
+                                <b>LG생활건강3</b>
+                                LG생활건강 숨37°, 로시크숨마 엘릭서 트리트먼트 ＆ 크림 뤼미에르 출시
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스4</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스5</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스6</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스7</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스8</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스9</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스10</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스11</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="msbx swiper-slide">
+                        <figure>
+                            <img src="images/media9.png" alt="LG유플러스">
+                            <figcaption>
+                                <b>LG유플러스12</b>
+                                LG유플러스, 연간 고객 감사 프로젝트 'Thank U+' 시작
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows JS로 대체 -->
+                <!--
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+-->
             </div>
+            <button id="prevbtn"></button>
+            <button id="nextbtn"></button>
             <!-- 미디어 페이지 하단 이미지-->
             <div class="mimgbx">
-                <img src="" alt="">
-                <img src="" alt="">
+                <img src="images/media_img1.png" alt="환경과 사람을 위한 미래의집"><img src="images/media_img2.png" alt="매거진-OLED">
             </div>
         </div>
+        <aside class="aside1">
+            <img src="images/main_text_media.png" alt="NEWS&CONTENTS영역">
+        </aside>
     </section>
 
     <!--2-3. CSR영역 -->
     <section id="csr" class="csr page">
-
+        <div class="ccont">
+            <!-- CSR영역 페이지제목-->
+            <h2>CSR</h2>
+            <span class="cstit">LG는 기업과 사회, 환경이 공존할 수 있도록 지속적으로 사회적 책임을 실천하고 있습니다.</span>
+            <div class="cimgbx">
+                <ul>
+                    <li class="clist">
+                        <a href="#">
+                            <span>
+                                우리 사회의 <br> 의인을 알리는 <br>
+                                <b>LG 의인상</b>
+                                <br>
+                                <button>바로가기</button>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="clist">
+                        <a href="#">
+                            <span>
+                                글로벌시대 인재를 <br> 육성하는 <br>
+                                <b>사랑의 다문화 <br> 학교 </b> 
+                                <br>
+                                <button>바로가기</button>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="clist">
+                        <a href="#">
+                            <span>
+                                저신장아동들의 <br> 성장을 돕는 <br>
+                                <b>성장호르몬제 <br> 지원 </b> 
+                                <br>
+                                <button>바로가기</button>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="clist">
+                        <a href="#">
+                            <span>
+                                에티오피아 주민의 <br> 자립을 돕는 <br>
+                                <b>LG Hope <br> Community </b> 
+                                <br>
+                                <button>바로가기</button>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <aside class="aside2">
+            <img src="images/main_text_csr_bk.png" alt="corporate social responsibility">
+        </aside>
     </section>
+
+
     <!--2-4. 바로가기영역 -->
     <section id="gogo" class="gogo page">
+        <div class="gcont">
+            <h2>바로가기</h2>
+            <ul>
+                <li class="glist">
+                    LG사이언스파크 >
+                    <br> 미래 혁신 글로벌 연구단지
+                </li>
+                <li class="glist">
+                    LG 유튜브 >
+                </li>
+                <li class="glist">
+                    LG 페이스북
+                </li>
+                <li class="glist">
+                    정도경영 신문고 >
+                </li>
+                <li class="glist">
+                    LG공익재단 >
+                </li>
+                <li class="glist">
+                    <span class="bld">LG커리어스(채용포털)</span>
+                </li>
+            </ul>
+        </div>
 
+        <aside class="aside3">
+            <img src="images/main_text_related_v02.png" alt="corporate social responsibility">
+        </aside>
+
+    </section>
         <!-- 3. 배너블릿박스 -->
         <ol class="indic">
             <li class="on">
@@ -191,7 +392,9 @@
             </li>
         </ol>
 
-    </section>
     <!-- 5. 하단영역 -->
     <footer class="info"></footer>
-</body></html>
+
+</body>
+
+</html>
