@@ -1,0 +1,59 @@
+@charset "utf-8";
+/*기본CSS - base.css*/
+
+a {
+    text-decoration: none;
+    color: #999;
+}
+
+a:hover {
+    color: #666;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+strong {
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+@font-face {
+    font-family: 'NGothic';
+    src: url('../fonts/NanumGothic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/UbuntuCondensed-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'NGothicEB';
+    src: url('../fonts/NanumGothicExtraBold.woff') format('woff');
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    /* 보이는 화면 기준으로 하기위해선 vw 와 vh 를 이용한다!
+       100vw, 100vh : 보이는 화면을 100% 채우기 이므로 조금 더 정확하다!
+       예를들어 50% 와 50vw 의 경우...
+       전체의 50% 차지하는 것과 보이는 화면의 50% 차지한다는 점이 다르다*/
+    font: 10px "NGothicEB", Gulim;
+    /*10px로 한 이유는 em,rem,% 글자 상대단위 계산을 편하게 하기위함*/
+}
+
+body {
+    overflow: hidden;
+    /* 옆으로 정렬되는지 확인여부*/
+}
